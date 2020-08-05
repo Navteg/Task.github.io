@@ -21,9 +21,10 @@ from app import views
 
 urlpatterns = [
     path('',views.index,name="TodoList"),
+    path('',include("app.urls")),
     #path('',views.index,name='todo'),
     #path('del/',views.remove,name='remove'),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls,name='admin'),
     #path('', views.home),
     #path('send_push', views.send_push),
     #path('webpush/', include('webpush.urls')),

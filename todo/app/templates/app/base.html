@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Social Star</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Font   -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Russo+One&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="{% static 'css/master.css' %}"> -->
+
+
+  </head>
+  <body>
+
+
+    <nav class=" techfont navbar navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand mynav" href="{% url 'home' %}">Todo App</a>
+        {% if user.is_authenticated %}
+        <!-- <nav class=" techfont navbar navbar-light bg-light"> -->
+          <!-- <div class="container"> -->
+            <!-- <ul class="nav"> -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'views:index'}">Add Reminder</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accounts:logout' %}">LogOut</a>
+                </li>
+        </ul>
+      </div>
+
+
+      {% else %}
+
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'accounts:login' %}">LogIn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:signup' %}">SignUp</a>
+        </li>
+      </ul>
+      <!-- <li><a href="#">Create Group</a></li> -->
+            {% endif %}
+
+  </nav>
+
+    <div class="container mycontent">
+      {% block body_block %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>
